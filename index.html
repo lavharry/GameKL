@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Our Cozy Love Crossword ❤️</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background: #fff4e6;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #b56576;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(11, 35px);
+      gap: 4px;
+      justify-content: center;
+      margin: 20px auto;
+    }
+
+    input {
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      font-size: 18px;
+      text-transform: uppercase;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .black {
+      background: #444;
+      border: none;
+    }
+
+    .clues {
+      max-width: 600px;
+      margin: auto;
+      text-align: left;
+      background: #ffffffcc;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #b56576;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #8d4f5f;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #6d597a;
+    }
+  </style>
+</head>
+<body>
+
+<h1>💘 Our Love Story Crossword 💘</h1>
+<p>Fill in the clues, Honey Honey ❤️</p>
+
+<div class="grid" id="grid"></div>
+
+<div class="clues">
+  <h3>Across</h3>
+  <p>1. Our dating website (7)</p>
+  <p>3. Our marriage month (4)</p>
+  <p>5. Where we babymooned (6)</p>
+  <p>7. Our favorite thing to do under the night sky (11)</p>
+
+  <h3>Down</h3>
+  <p>1. Your nickname from me (10)</p>
+  <p>2. My other nickname for you (6)</p>
+  <p>4. The number that means the most (5)</p>
+  <p>6. Our favorite pet (6)</p>
+  <p>8. Our beautiful kids (7 & 7)</p>
+</div>
+
+<button onclick="checkAnswers()">Check Answers</button>
+
+<div id="message"></div>
+
+<script>
+const solution = [
+  "O","K","C","U","P","I","D","","","","",
+  "H","","","","","","","J","U","N","E",
+  "O","","","","","","","",
+  "N","","M","E","X","I","C","O","","","",
+  "E","","","","","","","",
+  "Y","","S","T","A","R","G","A","Z","I","N",
+  "H","","","","","","","",
+  "O","","","","","","","",
+  "N","","","","","","","",
+  "E","","","","","","","",
+  "Y","","","","","","",""
+];
+
+const grid = document.getElementById("grid");
+
+solution.forEach(letter => {
+  const input = document.createElement("input");
+  input.maxLength = 1;
+
+  if (letter === "") {
+    input.classList.add("black");
+    input.disabled = true;
+  }
+
+  grid.appendChild(input);
+});
+
+function checkAnswers() {
+  const inputs = document.querySelectorAll(".grid input");
+  let correct = true;
+
+  inputs.forEach((input, i) => {
+    if (!input.classList.contains("black")) {
+      if (input.value.toUpperCase() !== solution[i]) {
+        correct = false;
+      }
+    }
+  });
+
+  if (correct) {
+    document.getElementById("message").innerHTML =
+      "💖 You solved it! HOME IS YOU 💖<br><br>I love our life — June weddings, Mexico sunsets, stargazing nights, and raising Illaria & Elliott together.";
+  } else {
+    document.getElementById("message").innerHTML =
+      "Not quite yet, Cactus 😉 Keep going, my love.";
+  }
+}
+</script>
+
+</body>
+</html>
